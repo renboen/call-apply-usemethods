@@ -1,1 +1,30 @@
 //参考http://uule.iteye.com/blog/1158829
+
+1、方法定义
+call方法: 
+语法：call([thisObj[,arg1[, arg2[,   [,.argN]]]]]) 
+定义：调用一个对象的一个方法，以另一个对象替换当前对象。 
+说明： 
+call 方法可以用来代替另一个对象调用一个方法。call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象。 
+如果没有提供 thisObj 参数，那么 Global 对象被用作 thisObj。 
+
+apply方法： 
+语法：apply([thisObj[,argArray]]) 
+定义：应用某一对象的一个方法，用另一个对象替换当前对象。 
+说明： 
+如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。 
+如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。
+
+实例一。
+	/*以另一个对象替换当前对象(如果两个都为对象的时候，理解为替换。但实现对象的多重继承时，也是两个对象，理解为替换应该不对)
+			 * js中函数也是对象，匿名函数是对对象Function的引用
+			 * 用sub代替add，所以sub.call(add,2,1)==sub(2,1)
+			*/
+			function sub(a, b) {
+				alert(a - b)
+			}
+
+			function add(a, b) {
+				alert(a + b)
+			}
+			sub.call(add,2,1)
